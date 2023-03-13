@@ -12,12 +12,17 @@
         <div
             role="button"
             onclick="location.href='{% url "list" todolist.id %}'">
-            {{ todolist.date }}
+            {{ todolist }}
         </div>
     </li>
     {% empty %}
     <h4>You have no lists!</h4>
     {% endfor %}
 </ul>
-
+<p>
+    <input
+        value="Add a new Date"
+        type="button"
+        onclick="location.href='{% url "list-add" %}'"/>
+</p>
 {% endblock %}

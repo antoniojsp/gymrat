@@ -8,7 +8,7 @@ from datetime import datetime
 
 
 class Date(models.Model):
-    date = models.DateField()
+    date = models.DateField(unique=True)
 
     def get_absolute_url(self):
         return reverse("list", args=[self.id])
