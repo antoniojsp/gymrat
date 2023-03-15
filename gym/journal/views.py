@@ -22,6 +22,7 @@ class ExerciseListView(ListView):
 
     def get_context_data(self):
         context = super().get_context_data()
+        print(Exercise.objects.get(id=self.kwargs["list_id"]))
         context["todo_list"] = Exercise.objects.get(id=self.kwargs["list_id"])
         return context
 
@@ -60,7 +61,7 @@ class ExerciseCreate(CreateView):
         return context
 
     def get_success_url(self):
-        return reverse("list", args=[self.object.todo_list_id])
+        return reverse("list", args=[self.object.date_id])
 
 
 class ExerciseUpdate(UpdateView):
