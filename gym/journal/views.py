@@ -13,7 +13,6 @@ class DatesListView(ListView):
     model = Date
     template_name = "journal/index.html"
 
-
 class ExerciseListView(ListView):
     model = Exercise
     template_name = "journal/date.html"
@@ -56,6 +55,7 @@ class ExerciseCreate(CreateView):
     def get_context_data(self):
         context = super(ExerciseCreate, self).get_context_data()
         date_list = Date.objects.get(id=self.kwargs["list_id"])
+        context["drop_menu"] = "lista"
         context["todo_list"] = date_list
         context["title"] = "Enter a new exercise."
         return context
