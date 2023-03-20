@@ -24,5 +24,8 @@ urlpatterns = [
         views.ExerciseUpdate.as_view(),
         name="item-update",
     ),
+    path(
+        "exercise/add/", views.NewExerciseCreate.as_view(), name="exercise-create",
+    )
 
 ]

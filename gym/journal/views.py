@@ -6,7 +6,7 @@ from django.views.generic import (
     DeleteView,
 )
 # Create your views here.
-from .models import Date, Exercise
+from .models import Date, Exercise, NewExercise
 
 
 class DatesListView(ListView):
@@ -36,6 +36,17 @@ class DateCreate(CreateView):
         return context
 
 
+class NewExerciseCreate(CreateView):
+    model = NewExercise
+    fields = ["name"]
+
+    def get_context_data(self):
+        context = super(NewExerciseCreate, self).get_context_data()
+        context["title"] = "Add a new exercise"
+        return context
+
+    success_url = reverse_lazy("index")
+
 class ExerciseCreate(CreateView):
     model = Exercise
     fields = [
@@ -55,7 +66,6 @@ class ExerciseCreate(CreateView):
     def get_context_data(self):
         context = super(ExerciseCreate, self).get_context_data()
         date_list = Date.objects.get(id=self.kwargs["list_id"])
-        context["drop_menu"] = "lista"
         context["todo_list"] = date_list
         context["title"] = "Enter a new exercise."
         return context
