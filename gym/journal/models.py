@@ -16,18 +16,16 @@ class Date(models.Model):
     def __str__(self):
         return str(self.date)
 
-
-EXERCISE_CHOICES = (
-    ('green', 'GREEN'),
-    ('blue', 'BLUE'),
-    ('red', 'RED'),
-    ('orange', 'ORANGE'),
-    ('black', 'BLACK'),
-)
+class NewExercise(models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return f"Name: {self.name}"
+    class Meta:
+        ordering = ["name"]
 
 
 class Exercise(models.Model):
-    name = models.CharField(max_length=100, choices=EXERCISE_CHOICES, default="green")
+    name = models.CharField(max_length=100)
     weight = models.IntegerField(default=0)
     sets = models.IntegerField(default=0)
     reps = models.IntegerField(default=0)
@@ -45,9 +43,3 @@ class Exercise(models.Model):
         ordering = ["name"]
 
 
-class NewExercise(models.Model):
-    name = models.CharField(max_length=100)
-    def __str__(self):
-        return f"Name: {self.name}"
-    class Meta:
-        ordering = ["name"]
