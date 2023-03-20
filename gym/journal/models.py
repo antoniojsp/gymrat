@@ -30,7 +30,7 @@ class Exercise(models.Model):
         )
 
     def __str__(self):
-        return f"{self.name} {self.weight} {self.sets} {self.reps}"
+        return f"Name: {self.name}, Weight:{self.weight} lb. ,Sets: {self.sets}, Reps: {self.reps}"
 
     class Meta:
         ordering = ["name"]

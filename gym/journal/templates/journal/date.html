@@ -6,7 +6,7 @@
     <div>
         <div>
             <h3>Edit list:</h3>
-            <h5>{{ todo_list.title | upper }}</h5>
+            <h5>{{ todo_list.date | upper }}</h5>
         </div>
         <ul>
             {% for todo in object_list %}
@@ -16,7 +16,7 @@
                         role="button"
                         onclick="location.href=
                         '{% url "item-update" todo_list.id todo.id %}'">
-                        {{ todo.name }} {{ todo.weight }}
+                        {{ todo}}
                     </div>
 
 
@@ -32,6 +32,12 @@
                 type="button"
                 onclick="location.href='{% url "item-add" todo_list.id %}'"
             />
+                        <input
+                value="Delete this list"
+                type="button"
+                onclick="location.href=
+                '{% url "list-delete" todo_list.id %}'" />
+
         </p>
     </div>
 </div>
