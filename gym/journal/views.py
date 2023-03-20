@@ -23,7 +23,7 @@ class ExerciseListView(ListView):
 
     def get_context_data(self):
         context = super().get_context_data()
-        context["todo_list"] = Exercise.objects.get(id=self.kwargs["list_id"])
+        context["todo_list"] = Date.objects.get(id=self.kwargs["list_id"])
         return context
 
 
@@ -98,6 +98,6 @@ class ExerciseDelete(DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["todo_list"] = self.object.todo_list
+        context["todo_list"] = self.object.date
         return context
 
