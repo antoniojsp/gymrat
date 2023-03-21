@@ -25,7 +25,9 @@ class NewExercise(models.Model):
 
 
 class Exercise(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.ForeignKey(NewExercise, on_delete=models.SET_NULL, null=True)
+
+    # name = models.CharField(max_length=100, )
     weight = models.IntegerField(default=0)
     sets = models.IntegerField(default=0)
     reps = models.IntegerField(default=0)
