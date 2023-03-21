@@ -1,7 +1,5 @@
 from django.db import models
-
 from django.utils import timezone
-
 from django.db import models
 from django.urls import reverse
 from datetime import datetime
@@ -14,12 +12,18 @@ class Date(models.Model):
         return reverse("list", args=[self.id])
 
     def __str__(self):
-        return str(self.date)
+        date = datetime.strptime(str(self.date),
+                                 "%Y-%m-%d")
+
+        return date.strftime("%A, %B %d, %Y")
+
 
 class NewExercise(models.Model):
     name = models.CharField(max_length=100)
+
     def __str__(self):
-        return f"Name: {self.name}"
+        return f"{self.name}"
+
     class Meta:
         ordering = ["name"]
 
@@ -43,5 +47,3 @@ class Exercise(models.Model):
 
     class Meta:
         ordering = ["name"]
-
-

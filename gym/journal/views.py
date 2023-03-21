@@ -30,7 +30,7 @@ class DateCreate(CreateView):
     model = Date
     fields = ["date"]
 
-    def get_context_data(self):
+    def get_context_data(self, **kwargs):
         context = super(DateCreate, self).get_context_data()
         context["title"] = "Add a new date"
         return context
